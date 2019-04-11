@@ -1,4 +1,6 @@
-public class User {
+import java.util.Observable;
+
+public class User implements Observer{
 
     enum Gender {Male, Female};
     String name;
@@ -7,7 +9,6 @@ public class User {
     String address;
     String city;
     String zipCode;
-    Gender gender;
 
     public User(String name, String emailAddress, int age, String address, String city, String zipCode, Gender gender) {
         this.name = name;
@@ -16,6 +17,19 @@ public class User {
         this.address = address;
         this.city = city;
         this.zipCode = zipCode;
-        this.gender = gender;
+    }
+
+    private Observable observable = null;
+
+    public User (Observable = observable){
+        this.observable = observable;
+    }
+
+    public void update(){
+        subscribeToShow();
+    }
+
+    public void subscribeToShow(){
+        observable.addObserver(this);
     }
 }

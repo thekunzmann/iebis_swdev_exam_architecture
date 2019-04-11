@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Observer;
 
 /**
  * Try to modify this class only where is mentioned
@@ -6,7 +7,7 @@ import java.util.ArrayList;
  */
 
 
-public class Main {
+public class Main implements Observer {
 
     public static void main(String[] args) {
         User angelica = new User("Angelica", "", 23, "", "", "", User.Gender.Female);
@@ -17,19 +18,15 @@ public class Main {
         gtSeason1.addFullSeason(createGotSeason1Episodes());
         gameThrones.addSeason(gtSeason1);
 
-        // -----------------------
-        // Implement here the code to make Angelica subscribes to Game of Thrones because is her favourite TV Show
-        // Add your code here
+        angelica.subscribeToShow();
 
-
-        // -----------------------
 
 
         // New episode in season1
         Episode episodeExtra = new Episode(3000, "The making of Season 1"); // 3000 -> length of the episode in seconds(int), and Title of the episode
         gtSeason1.addEpisode(episodeExtra);
 
-        // Because of the new episode added Angelica should receive a notification (for simplicity just print out the message in the console)
+
 
         // Fearing a leak of episodes HBO releases the whole season overnight
         System.out.println("------------- One year has passed -------------");
@@ -37,7 +34,6 @@ public class Main {
         gtSeason2.addFullSeason(createGotSeason2Episodes());
         gameThrones.addSeason(gtSeason2);
 
-        // Because of the full season added Angelica should receive a whole set of notifications regarding season 2
     }
 
 
